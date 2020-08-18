@@ -1,3 +1,31 @@
-* {
-    border: 1px solid red;
+body {
+    margin: 0;
+}
+
+.conatiner {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "stats game game";
+    grid-template-columns: 10rem;
+}
+
+header {
+    grid-area: header;
+    border-bottom: 0.1px solid rgba(123, 123, 123, 0.5);
+    background: #515151;
+    height: 100px;
+}
+
+.flex-bar {
+    grid-area: stats;
+    border-right: 0.1px solid rgba(94, 93, 93, 0.8);
+    background: #2b2b2b;
+    height: 100vh;
+}
+
+.flex-content {
+    grid-area: game;
+    background: #3d3d3d;
+    height: 100vh;
 }
