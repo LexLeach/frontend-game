@@ -19,13 +19,47 @@ header {
 
 .grid-bar {
     grid-area: stats;
+    display: flex;
+    justify-content: center;
     border-right: 0.1px solid rgba(94, 93, 93, 0.8);
     background: #2b2b2b;
     height: 100vh;
+}
+
+.rss-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+.rss-num {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 3px;
 }
 
 .grid-content {
     grid-area: game;
     background: #3d3d3d;
     height: 100vh;
+}
+
+input {
+    width: 50px;
+    background: grey;
+    border-radius: 5px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+.food,
+.wood,
+.iron,
+.soldiers {
+    margin-right: 15px;
 }
