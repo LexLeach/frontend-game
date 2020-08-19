@@ -13,6 +13,7 @@ let kingdom = {
     },
     cottages: {
         units: 1,
+        population_required: 0,
         cost: {
             food: 20,
             wood: 50,
@@ -23,20 +24,22 @@ let kingdom = {
     },
     farms: {
         units: 1,
+        population_required: 2,
         cost: {
             food: 20,
             wood: 25,
-            stone: 50
+            stone: 40
         },
         occupied: 0,
         modifier: 10,
     },
     sawmills: {
-        units: 0,
+        units: 1,
+        population_required: 3,
         cost: {
             food: 25,
             wood: 50,
-            stone: 25,
+            stone: 20,
             ore: 10
         },
         occupied: 0,
@@ -44,6 +47,7 @@ let kingdom = {
     },
     quarrys: {
         units: 0,
+        population_required: 4,
         cost: {
             food: 50,
             wood: 0,
@@ -55,6 +59,13 @@ let kingdom = {
     },
     mines: {
         units: 0,
+        population_required: 4,
+        cost: {
+            food: 50,
+            wood: 30,
+            stone: 0,
+            ore: 10
+        },
         occupied: 0,
         modifier: 10,
     },
@@ -272,13 +283,19 @@ resources.wood.total += resources.wood.start
 resources.stone.total += resources.stone.start
 resources.ore.total += resources.ore.start
 kingdom.population.total += kingdom.population.start
+kingdom.cottages.total += kingdom.cottages.start
+kingdom.farms.total += kingdom.farms.start
+kingdom.sawmills.total += kingdom.sawmills.start
+kingdom.quarrys.total += kingdom.quarrys.start
+kingdom.mines.total += kingdom.mines.start
+
 //Kingdom variables
-let population = kingdom.population
-let cottages = kingdom.cottages
-let farms = kingdom.farms
-let sawmills = kingdom.sawmills
-let quarrys = kingdom.quarrys
-let mines = kingdom.mines
+let population = kingdom.population.total
+//let cottages = kingdom.cottages
+//let farms = kingdom.farms
+//let sawmills = kingdom.sawmills
+//let quarrys = kingdom.quarrys
+//let mines = kingdom.mines
 //Resource variables
 let food = resources.food.total
 let wood = resources.wood.total
@@ -295,40 +312,123 @@ addCottageBtn.addEventListener('click', () => {
     addCottage()
 })
 addFarmBtn.addEventListener('click', () => {
-    kingdom.farms.units++
-    kingdom.population.total -= 2
-    document.querySelector('.frm').value = kingdom.farms.units
-    document.querySelector('.pop').value = kingdom.population.total
-    console.log("Pop Total");
-    console.log(kingdom.population.total)
+    addFarm()
 })
 addSawmillBtn.addEventListener('click', () => {
-    kingdom.sawmills.units++
-    kingdom.population.total -= 3
-    document.querySelector('.swml').value = kingdom.sawmills.units
-    document.querySelector('.pop').value = kingdom.population.total
+    addSawmill()
 })
 addQuarryBtn.addEventListener('click', () => {
-    kingdom.quarrys.units++
-    kingdom.population.total -= 4
-    document.querySelector('.qurys').value = kingdom.quarrys.units
-    document.querySelector('.pop').value = kingdom.population.total
+    addQuarry()
 })
 addMineBtn.addEventListener('click', () => {
-    kingdom.mines.units++
-    kingdom.population.total -= 4
-    document.querySelector('.nms').value = kingdom.mines.units
-    document.querySelector('.pop').value = kingdom.population.total
+    addMine()
 })
+/*
+let checkPopulation = (building) => {
+
+    let populationRequired = kingdom.building.population_required
+
+    if (population >= populationRequired) {
+        return true
+    } else {
+        return false
+    }
+}
+*/
+let checkPopulation = (building) => {
+    if (building == 'cottages') {
+        let populationRequired = kingdom.cottages.population_required
+        if (!population >= populationRequired) {
+            return
+        } else {
+            console.log("Your population is low! Consider building more houses!")
+        }
+    } else
+    if (building == 'farms') {
+        let populationRequired = kingdom.farms.population_required
+        if (!population >= populationRequired) {
+            return
+        } else {
+            console.log("Your population is low! Consider building more houses!")
+        }
+    } else
+    if (building == 'quarrys') {
+        let populationRequired = kingdom.quarrys.population_required
+        if (!population >= populationRequired) {
+            return
+        } else {
+            console.log("Your population is low! Consider building more houses!");
+        }
+    } else
+    if (building == 'mines') {
+        let populationRequired = kingdom.mines.population_required
+        if (!population >= populationRequired) {
+            return
+        } else {
+            console.log("Your population is low! Consider building more houses!");
+        }
+    }
+
+}
 
 let addCottage = () => {
-    if (food >= 20 && wood >= 50 && stone >= 25) {
-        kingdom.cottages.units++
-        kingdom.population.total += kingdom.cottages.modifier
-        document.querySelector('.cott').value = kingdom.cottages.units
-        document.querySelector('.pop').value = kingdom.population.total
-    } else {
-        console.log("You need more resources! Cottages require: 20 Food, 50 wood, and 25 stone.")
+    if (!checkPopulation('cottages')) {
+        if (food >= 20 && wood >= 50 && stone >= 25) {
+            kingdom.cottages.units++
+            kingdom.population.total += kingdom.cottages.modifier
+            document.querySelector('.cott').value = kingdom.cottages.units
+            document.querySelector('.pop').value = kingdom.population.total
+        } else {
+            console.log("You need more resources! Cottages require: 20 Food, 50 wood, and 25 stone.")
+        }
+    }
+}
+let addFarm = () => {
+    if (!checkPopulation('farms')) {
+        if (food >= 20 && wood >= 25 && stone >= 40) {
+            kingdom.farms.units++
+            kingdom.population.total -= 2
+            document.querySelector('.frm').value = kingdom.farms.units
+            document.querySelector('.pop').value = kingdom.population.total
+        } else {
+            console.log("You need more resources! Farms require: 20 Food, 25 wood, and 40 stone.")
+        }
+    }
+}
+let addSawmill = () => {
+    if (!checkPopulation('sawmills')) {
+        if (food >= 25 && wood >= 50 && stone >= 25) {
+            kingdom.sawmills.units++
+            kingdom.population.total -= 3
+            document.querySelector('.swml').value = kingdom.sawmills.units
+            document.querySelector('.pop').value = kingdom.population.total
+        } else {
+            console.log("You need more resources! Sawmills require: 25 Food, 50 wood, and 25 stone.")
+        }
+    }
+}
+let addQuarry = () => {
+    if (!checkPopulation('quarrys')) {
+        if (food >= 50 && ore >= 10) {
+            kingdom.quarrys.units++
+            kingdom.population.total -= 4
+            document.querySelector('.qurys').value = kingdom.quarrys.units
+            document.querySelector('.pop').value = kingdom.population.total
+        } else {
+            console.log("You need more resources! Quarrys require: 50 Food and 10 ore.")
+        }
+    }
+}
+let addMine = () => {
+    if (!checkPopulation('mines')) {
+        if (food >= 50 && wood >= 30 && ore >= 10) {
+            kingdom.mines.units++
+            kingdom.population.total -= 4
+            document.querySelector('.nms').value = kingdom.mines.units
+            document.querySelector('.pop').value = kingdom.population.total
+        } else {
+            console.log("You need more resources! Quarrys require: 50 Food, 30 wood, and 10 ore.")
+        }
     }
 }
 
@@ -338,5 +438,10 @@ let startGame = () => {
     document.querySelector('.stn').value = resources.stone.total
     document.querySelector('.or').value = resources.ore.total
     document.querySelector('.pop').value = kingdom.population.total
+    document.querySelector('.cott').value = kingdom.cottages.units
+    document.querySelector('.frm').value = kingdom.farms.units
+    document.querySelector('.swml').value = kingdom.sawmills.units
+    document.querySelector('.qurys').value = kingdom.quarrys.units
+    document.querySelector('.nms').value = kingdom.mines.units
 }
 startGame()
