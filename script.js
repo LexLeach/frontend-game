@@ -244,7 +244,6 @@ resources.food.total += resources.food.start
 resources.wood.total += resources.wood.start
 resources.stone.total += resources.stone.start
 resources.ore.total += resources.ore.start
-kingdom.population.total += kingdom.cottages.modifier
 //Rss html variables
 //let soldiers = document.querySelector('.sldrs').value
 //html button variables
@@ -252,6 +251,7 @@ let addCottage = document.querySelector('.add-cottage')
 
 addCottage.addEventListener('click', () => {
     kingdom.cottages.units++
+    kingdom.population.total += kingdom.cottages.modifier
     document.querySelector('.cott').value = kingdom.cottages.units
     document.querySelector('.pop').value = kingdom.population.total
     console.log(kingdom.population.total)
@@ -263,3 +263,4 @@ let startGame = () => {
     document.querySelector('.stn').value = resources.stone.total
     document.querySelector('.or').value = resources.ore.total
 }
+startGame()
