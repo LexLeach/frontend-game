@@ -3,7 +3,7 @@ console.log('Beam me up, Scotty!');
 let kingdom = {
     population: {
         start: 0,
-        occupird: 0,
+        occupied: 0,
         total: 0
     },
     castle: {
@@ -15,25 +15,21 @@ let kingdom = {
         units: 0,
         occupied: 0,
         modifier: 4, //Adds 4 peeps to population
-        total: 0
     },
     farms: {
         units: 0,
         occupied: 0,
         modifier: 10,
-        total: 0
     },
     sawmills: {
         units: 0,
         occupied: 0,
         modifier: 10,
-        total: 0
     },
     forges: {
         units: 0,
         occupied: 0,
         modifier: 10,
-        total: 0
     },
     soldiers: {
         types: []
@@ -243,17 +239,22 @@ let random_encounter = {
     }
 }
 */
-//Rss html variables
+
 resources.food.total += resources.food.start
 resources.wood.total += resources.wood.start
 resources.stone.total += resources.stone.start
 resources.ore.total += resources.ore.start
+kingdom.population.total += kingdom.cottages.modifier
+//Rss html variables
 //let soldiers = document.querySelector('.sldrs').value
 //html button variables
 let addCottage = document.querySelector('.add-cottage')
 
 addCottage.addEventListener('click', () => {
     kingdom.cottages.units++
+    document.querySelector('.cott').value = kingdom.cottages.units
+    document.querySelector('.pop').value = kingdom.population.total
+    console.log(kingdom.population.total)
 })
 
 let startGame = () => {

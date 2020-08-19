@@ -45,7 +45,8 @@ input {
     border-radius: 5px;
 }
 
-.rss-flex h3, p {
+.rss-flex h3,
+p {
     color: white;
 }
 
@@ -67,4 +68,17 @@ select:focus {
     grid-area: game;
     background: #3d3d3d;
     height: 100vh;
+}
+
+.grid-content h3,
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.kingdom-flex {
+    display: flex;
+    justify-content: space-around;
 }
