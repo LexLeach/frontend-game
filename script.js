@@ -272,23 +272,33 @@ resources.wood.total += resources.wood.start
 resources.stone.total += resources.stone.start
 resources.ore.total += resources.ore.start
 kingdom.population.total += kingdom.population.start
-//Rss html variables
-//let soldiers = document.querySelector('.sldrs').value
+//Kingdom variables
+let population = kingdom.population
+let cottages = kingdom.cottages
+let farms = kingdom.farms
+let sawmills = kingdom.sawmills
+let quarrys = kingdom.quarrys
+let mines = kingdom.mines
+//Resource variables
+let food = resources.food
+let wood = resources.wood
+let stone = resources.stone
+let ore = resources.ore
 //html button variables
-let addCottage = document.querySelector('.add-cottage')
-let addFarm = document.querySelector('.add-farm')
-let addSawmill = document.querySelector('.add-sawmill')
-let addQuarry = document.querySelector('.add-quarry')
-let addMine = document.querySelector('.add-mine')
+let addCottageBtn = document.querySelector('.add-cottage')
+let addFarmBtn = document.querySelector('.add-farm')
+let addSawmillBtn = document.querySelector('.add-sawmill')
+let addQuarryBtn = document.querySelector('.add-quarry')
+let addMineBtn = document.querySelector('.add-mine')
 
-addCottage.addEventListener('click', () => {
+addCottageBtn.addEventListener('click', () => {
     kingdom.cottages.units++
     kingdom.population.total += kingdom.cottages.modifier
     document.querySelector('.cott').value = kingdom.cottages.units
     document.querySelector('.pop').value = kingdom.population.total
     console.log(kingdom.population.total)
 })
-addFarm.addEventListener('click', () => {
+addFarmBtn.addEventListener('click', () => {
     kingdom.farms.units++
     kingdom.population.total -= 2
     document.querySelector('.frm').value = kingdom.farms.units
@@ -296,19 +306,19 @@ addFarm.addEventListener('click', () => {
     console.log("Pop Total");
     console.log(kingdom.population.total)
 })
-addSawmill.addEventListener('click', () => {
+addSawmillBtn.addEventListener('click', () => {
     kingdom.sawmills.units++
     kingdom.population.total -= 3
     document.querySelector('.swml').value = kingdom.sawmills.units
     document.querySelector('.pop').value = kingdom.population.total
 })
-addQuarry.addEventListener('click', () => {
+addQuarryBtn.addEventListener('click', () => {
     kingdom.quarrys.units++
     kingdom.population.total -= 4
     document.querySelector('.qurys').value = kingdom.quarrys.units
     document.querySelector('.pop').value = kingdom.population.total
 })
-addMine.addEventListener('click', () => {
+addMineBtn.addEventListener('click', () => {
     kingdom.mines.units++
     kingdom.population.total -= 4
     document.querySelector('.nms').value = kingdom.mines.units
