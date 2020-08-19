@@ -26,7 +26,12 @@ let kingdom = {
         occupied: 0,
         modifier: 10,
     },
-    forges: {
+    quarrys: {
+        units: 0,
+        occupied: 0,
+        modifier: 10,
+    },
+    mines: {
         units: 0,
         occupied: 0,
         modifier: 10,
@@ -248,6 +253,10 @@ resources.ore.total += resources.ore.start
 //let soldiers = document.querySelector('.sldrs').value
 //html button variables
 let addCottage = document.querySelector('.add-cottage')
+let addFarm = document.querySelector('.add-farm')
+let addSawmill = document.querySelector('.add-sawmill')
+let addQuarry = document.querySelector('.add-quarry')
+let addMine = document.querySelector('.add-mine')
 
 addCottage.addEventListener('click', () => {
     kingdom.cottages.units++
@@ -255,6 +264,32 @@ addCottage.addEventListener('click', () => {
     document.querySelector('.cott').value = kingdom.cottages.units
     document.querySelector('.pop').value = kingdom.population.total
     console.log(kingdom.population.total)
+})
+addFarm.addEventListener('click', () => {
+    kingdom.farms.units++
+    kingdom.population.total -= 2
+    document.querySelector('.frm').value = kingdom.farms.units
+    document.querySelector('.pop').value = kingdom.population.total
+    console.log("Pop Total");
+    console.log(kingdom.population.total)
+})
+addSawmill.addEventListener('click', () => {
+    kingdom.sawmills.units++
+    kingdom.population.total -= 3
+    document.querySelector('.swml').value = kingdom.sawmills.units
+    document.querySelector('.pop').value = kingdom.population.total
+})
+addQuarry.addEventListener('click', () => {
+    kingdom.quarrys.units++
+    kingdom.population.total -= 4
+    document.querySelector('.qurys').value = kingdom.quarrys.units
+    document.querySelector('.pop').value = kingdom.population.total
+})
+addMine.addEventListener('click', () => {
+    kingdom.mines.units++
+    kingdom.population.total -= 4
+    document.querySelector('.nms').value = kingdom.mines.units
+    document.querySelector('.pop').value = kingdom.population.total
 })
 
 let startGame = () => {
