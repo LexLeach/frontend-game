@@ -2,7 +2,7 @@ console.log('Beam me up, Scotty!');
 
 let kingdom = {
     population: {
-        start: 0,
+        start: 4,
         occupied: 0,
         total: 0
     },
@@ -13,21 +13,43 @@ let kingdom = {
     },
     cottages: {
         units: 0,
+        cost: {
+            food: 20,
+            wood: 50,
+            stone: 25
+        },
         occupied: 0,
         modifier: 4, //Adds 4 peeps to population
     },
     farms: {
         units: 0,
+        cost: {
+            food: 20,
+            wood: 25,
+            stone: 50
+        },
         occupied: 0,
         modifier: 10,
     },
     sawmills: {
         units: 0,
+        cost: {
+            food: 25,
+            wood: 50,
+            stone: 25,
+            ore: 10
+        },
         occupied: 0,
         modifier: 10,
     },
     quarrys: {
         units: 0,
+        cost: {
+            food: 50,
+            wood: 0,
+            stone: 0,
+            ore: 10
+        },
         occupied: 0,
         modifier: 10,
     },
@@ -58,7 +80,7 @@ let resources = {
         total: 0
     },
     stone: {
-        start: 150,
+        start: 50,
         modifier: 0,
         total: 0
     }
@@ -249,6 +271,7 @@ resources.food.total += resources.food.start
 resources.wood.total += resources.wood.start
 resources.stone.total += resources.stone.start
 resources.ore.total += resources.ore.start
+kingdom.population.total += kingdom.population.start
 //Rss html variables
 //let soldiers = document.querySelector('.sldrs').value
 //html button variables
@@ -297,5 +320,6 @@ let startGame = () => {
     document.querySelector('.wd').value = resources.wood.total
     document.querySelector('.stn').value = resources.stone.total
     document.querySelector('.or').value = resources.ore.total
+    document.querySelector('.pop').value = kingdom.population.total
 }
 startGame()
