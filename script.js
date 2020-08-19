@@ -14,7 +14,7 @@ let kingdom = {
     cottages: {
         units: 0,
         occupied: 0,
-        modifier: 4,
+        modifier: 4, //Adds 4 peeps to population
         total: 0
     },
     farms: {
@@ -244,23 +244,21 @@ let random_encounter = {
 }
 */
 //Rss html variables
-//let food = document.querySelector('.fd').value
-//let wood = document.querySelector('.wd').value
-//let stone = document.querySelector('.stn').value
-//let ore = document.querySelector('.or').value
+resources.food.total += resources.food.start
+resources.wood.total += resources.wood.start
+resources.stone.total += resources.stone.start
+resources.ore.total += resources.ore.start
 //let soldiers = document.querySelector('.sldrs').value
 //html button variables
 let addCottage = document.querySelector('.add-cottage')
-
-let startGame = () => {
-    document.querySelector('.fd').value = resources.food.start
-    document.querySelector('.wd').value = resources.wood.start
-    document.querySelector('.stn').value = resources.stone.start
-    document.querySelector('.or').value = resources.ore.start
-}
 
 addCottage.addEventListener('click', () => {
     kingdom.cottages.units++
 })
 
-startGame()
+let startGame = () => {
+    document.querySelector('.fd').value = resources.food.total
+    document.querySelector('.wd').value = resources.wood.total
+    document.querySelector('.stn').value = resources.stone.total
+    document.querySelector('.or').value = resources.ore.total
+}
