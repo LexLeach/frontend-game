@@ -12,7 +12,7 @@ let kingdom = {
         lvlcap: 10
     },
     cottages: {
-        units: 0,
+        units: 1,
         cost: {
             food: 20,
             wood: 50,
@@ -22,7 +22,7 @@ let kingdom = {
         modifier: 4, //Adds 4 peeps to population
     },
     farms: {
-        units: 0,
+        units: 1,
         cost: {
             food: 20,
             wood: 25,
