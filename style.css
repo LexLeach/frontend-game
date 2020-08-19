@@ -58,7 +58,7 @@ select:focus {
 .food,
 .wood,
 .stone,
-.iron,
+.ore,
 .soldiers {
     margin-right: 15px;
 }

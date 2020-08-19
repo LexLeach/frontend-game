@@ -51,7 +51,7 @@ let resources = {
         modifier: 0,
         total: 0
     },
-    iron: {
+    ore: {
         start: 15,
         modifier: 0,
         total: 0
@@ -244,26 +244,23 @@ let random_encounter = {
 }
 */
 //Rss html variables
-let food = document.querySelector('.fd')
-let wood = document.querySelector('.wd')
-let stone = document.querySelector('.stn')
-let iron = document.querySelector('.irn')
-let soldiers = document.querySelector('.sldrs')
+//let food = document.querySelector('.fd').value
+//let wood = document.querySelector('.wd').value
+//let stone = document.querySelector('.stn').value
+//let ore = document.querySelector('.or').value
+//let soldiers = document.querySelector('.sldrs').value
 //html button variables
 let addCottage = document.querySelector('.add-cottage')
 
-
-
-console.log(kingdom.cottages.units)
-
+let startGame = () => {
+    document.querySelector('.fd').value = resources.food.start
+    document.querySelector('.wd').value = resources.wood.start
+    document.querySelector('.stn').value = resources.stone.start
+    document.querySelector('.or').value = resources.ore.start
+}
 
 addCottage.addEventListener('click', () => {
     kingdom.cottages.units++
-    console.log(kingdom.cottages.units)
 })
 
-
-
-
-
-
+startGame()
