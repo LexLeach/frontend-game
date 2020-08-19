@@ -35,3 +35,26 @@ let kingdom = {
         types: []
     }
 }
+
+let resources = {
+    food: {
+        start: 250, //Always 250, its the amount you start with
+        modifier: 0
+        total: 0
+    },
+    wood: {
+        start: 250, //Always 250, its the amount you start with
+        modifier: 0
+        total: 0
+    },
+    iron: {
+        start: 15, //Always 250, its the amount you start with
+        modifier: 0
+        total: 0
+    },
+    stone: {
+        start: 150, //Always 250, its the amount you start with
+        modifier: 0
+        total: 0
+    }
+}
