@@ -14,21 +14,25 @@ let kingdom = {
     cottages: {
         units: 0,
         occupied: 0,
+        modifier: 4,
         total: 0
     },
     farms: {
-        units: 250,
-        buff: 0,
-        total: 250
+        units: 0,
+        occupied: 0,
+        modifier: 10,
+        total: 0
     },
     sawmills: {
-        units: 50,
-        buff: 0,
-        total: 50
+        units: 0,
+        occupied: 0,
+        modifier: 10,
+        total: 0
     },
     forges: {
         units: 0,
         occupied: 0,
+        modifier: 10,
         total: 0
     },
     soldiers: {
@@ -38,23 +42,23 @@ let kingdom = {
 
 let resources = {
     food: {
-        start: 250, //Always 250, its the amount you start with
-        modifier: 0
-        total: 0
+        start: 250, //Always 250, its the amount you "start" with
+        modifier: 0,
+        total: 0,
     },
     wood: {
-        start: 250, //Always 250, its the amount you start with
-        modifier: 0
+        start: 250,
+        modifier: 0,
         total: 0
     },
     iron: {
-        start: 15, //Always 250, its the amount you start with
-        modifier: 0
+        start: 15,
+        modifier: 0,
         total: 0
     },
     stone: {
-        start: 150, //Always 250, its the amount you start with
-        modifier: 0
+        start: 150,
+        modifier: 0,
         total: 0
     }
 }
@@ -91,7 +95,7 @@ let troops = {
             type: "calvery",
             weakness: "range"
         }
-    }
+    },
     level_2: {
         swordsmen: {
             name: "Swordsmen",
@@ -157,3 +161,109 @@ let troops = {
         }
     }
 }
+/*
+let buffs = {
+    placeholder: {
+        placeholder:,
+        placeholder:,
+        placeholder:,
+        placeholder:
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    }
+}
+
+let deBuffs = {
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    }
+}
+
+let random_encounter = {
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    },
+    placeholder: {
+        placeholder: ,
+        placeholder: ,
+        placeholder: ,
+        placeholder: 
+    }
+}
+*/
+//Rss html variables
+let food = document.querySelector('.fd')
+let wood = document.querySelector('.wd')
+let stone = document.querySelector('.stn')
+let iron = document.querySelector('.irn')
+let soldiers = document.querySelector('.sldrs')
+//html button variables
+let addCottage = document.querySelector('.add-cottage')
+
+
+
+console.log(kingdom.cottages.units)
+
+
+addCottage.addEventListener('click', () => {
+    kingdom.cottages.units++
+    console.log(kingdom.cottages.units)
+})
+
+
+
+
+
+
