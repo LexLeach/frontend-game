@@ -280,10 +280,10 @@ let sawmills = kingdom.sawmills
 let quarrys = kingdom.quarrys
 let mines = kingdom.mines
 //Resource variables
-let food = resources.food
-let wood = resources.wood
-let stone = resources.stone
-let ore = resources.ore
+let food = resources.food.total
+let wood = resources.wood.total
+let stone = resources.stone.total
+let ore = resources.ore.total
 //html button variables
 let addCottageBtn = document.querySelector('.add-cottage')
 let addFarmBtn = document.querySelector('.add-farm')
@@ -292,11 +292,7 @@ let addQuarryBtn = document.querySelector('.add-quarry')
 let addMineBtn = document.querySelector('.add-mine')
 
 addCottageBtn.addEventListener('click', () => {
-    kingdom.cottages.units++
-    kingdom.population.total += kingdom.cottages.modifier
-    document.querySelector('.cott').value = kingdom.cottages.units
-    document.querySelector('.pop').value = kingdom.population.total
-    console.log(kingdom.population.total)
+    addCottage()
 })
 addFarmBtn.addEventListener('click', () => {
     kingdom.farms.units++
@@ -324,6 +320,17 @@ addMineBtn.addEventListener('click', () => {
     document.querySelector('.nms').value = kingdom.mines.units
     document.querySelector('.pop').value = kingdom.population.total
 })
+
+let addCottage = () => {
+    if (food >= 20 && wood >= 50 && stone >= 25) {
+        kingdom.cottages.units++
+        kingdom.population.total += kingdom.cottages.modifier
+        document.querySelector('.cott').value = kingdom.cottages.units
+        document.querySelector('.pop').value = kingdom.population.total
+    } else {
+        console.log("You need more resources! Cottages require: 20 Food, 50 wood, and 25 stone.")
+    }
+}
 
 let startGame = () => {
     document.querySelector('.fd').value = resources.food.total
