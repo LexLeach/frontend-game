@@ -24,7 +24,7 @@ let kingdom = {
     },
     farms: {
         units: 1,
-        population_required: 2,
+        population_required: 4,
         cost: {
             food: 20,
             wood: 25,
@@ -35,7 +35,7 @@ let kingdom = {
     },
     sawmills: {
         units: 1,
-        population_required: 3,
+        population_required: 6,
         cost: {
             food: 25,
             wood: 50,
@@ -46,8 +46,8 @@ let kingdom = {
         modifier: 10,
     },
     quarrys: {
-        units: 0,
-        population_required: 4,
+        units: 1,
+        population_required: 8,
         cost: {
             food: 50,
             wood: 0,
@@ -58,8 +58,8 @@ let kingdom = {
         modifier: 10,
     },
     mines: {
-        units: 0,
-        population_required: 4,
+        units: 1,
+        population_required: 8,
         cost: {
             food: 50,
             wood: 30,
@@ -290,18 +290,28 @@ kingdom.quarrys.total += kingdom.quarrys.start
 kingdom.mines.total += kingdom.mines.start
 
 //Kingdom variables
-let population = kingdom.population.total
-//let cottages = kingdom.cottages
-//let farms = kingdom.farms
-//let sawmills = kingdom.sawmills
-//let quarrys = kingdom.quarrys
-//let mines = kingdom.mines
+let cottages = kingdom.cottages
+let farms = kingdom.farms
+let sawmills = kingdom.sawmills
+let quarrys = kingdom.quarrys
+let mines = kingdom.mines
+let population = kingdom.population
 //Resource variables
-let food = resources.food.total
-let wood = resources.wood.total
-let stone = resources.stone.total
-let ore = resources.ore.total
+let food = resources.food
+let wood = resources.wood
+let stone = resources.stone
+let ore = resources.ore
 //html button variables
+let htmlFood = document.querySelector('.fd')
+let htmlWood = document.querySelector('.wd')
+let htmlStone = document.querySelector('.stn')
+let htmlOre = document.querySelector('.or')
+let htmlPopulation = document.querySelector('.pop')
+let htmlCottages = document.querySelector('.cott')
+let htmlFarms = document.querySelector('.frm')
+let htmlSawmills = document.querySelector('.swml')
+let htmlQuarrys = document.querySelector('.qurys')
+let htmlMines = document.querySelector('.nms')
 let addCottageBtn = document.querySelector('.add-cottage')
 let addFarmBtn = document.querySelector('.add-farm')
 let addSawmillBtn = document.querySelector('.add-sawmill')
@@ -323,61 +333,66 @@ addQuarryBtn.addEventListener('click', () => {
 addMineBtn.addEventListener('click', () => {
     addMine()
 })
-/*
-let checkPopulation = (building) => {
 
-    let populationRequired = kingdom.building.population_required
-
-    if (population >= populationRequired) {
-        return true
-    } else {
-        return false
-    }
-}
-*/
 let checkPopulation = (building) => {
     if (building == 'cottages') {
         let populationRequired = kingdom.cottages.population_required
         if (!population >= populationRequired) {
             return
-        } else {
-            console.log("Your population is low! Consider building more houses!")
         }
-    } else
+    }
     if (building == 'farms') {
         let populationRequired = kingdom.farms.population_required
         if (!population >= populationRequired) {
+            kingdom.population.total -= 2
             return
-        } else {
-            console.log("Your population is low! Consider building more houses!")
         }
-    } else
+    }
     if (building == 'quarrys') {
         let populationRequired = kingdom.quarrys.population_required
         if (!population >= populationRequired) {
+            kingdom.population.total -= 4
             return
-        } else {
-            console.log("Your population is low! Consider building more houses!");
         }
-    } else
+    }
     if (building == 'mines') {
         let populationRequired = kingdom.mines.population_required
         if (!population >= populationRequired) {
+            kingdom.population.total -= 4
             return
-        } else {
-            console.log("Your population is low! Consider building more houses!");
         }
     }
 
 }
+/*
+let checkResources = () => {
+    if (building == 'cottages') {
+        let bcost = kingdom.cottages.cost.food
+        if (!food >= bcost) {
+            food -= 20
+        } else {
+            return
+        }
+        if ()
+    }
+}
+*/
+
+
 
 let addCottage = () => {
     if (!checkPopulation('cottages')) {
-        if (food >= 20 && wood >= 50 && stone >= 25) {
-            kingdom.cottages.units++
-            kingdom.population.total += kingdom.cottages.modifier
-            document.querySelector('.cott').value = kingdom.cottages.units
-            document.querySelector('.pop').value = kingdom.population.total
+        if (food.total >= 20 && wood.total >= 50 && stone.total >= 25) {
+            food.total -= cottages.cost.food
+            htmlFood.value = food.total
+            wood.total -= cottages.cost.wood
+            htmlWood.value = wood.total
+            stone.total -= cottages.cost.stone
+            htmlStone.value = stone.total
+            cottages.units++
+            population.total += cottages.modifier
+            htmlCottages.value = cottages.units
+            htmlPopulation.value = population.total
         } else {
             console.log("You need more resources! Cottages require: 20 Food, 50 wood, and 25 stone.")
         }
@@ -387,12 +402,13 @@ let addFarm = () => {
     if (!checkPopulation('farms')) {
         if (food >= 20 && wood >= 25 && stone >= 40) {
             kingdom.farms.units++
-            kingdom.population.total -= 2
+
             document.querySelector('.frm').value = kingdom.farms.units
             document.querySelector('.pop').value = kingdom.population.total
         } else {
             console.log("You need more resources! Farms require: 20 Food, 25 wood, and 40 stone.")
         }
+        console.log('Your population is low! Try adding more cottages.');
     }
 }
 let addSawmill = () => {
@@ -405,43 +421,44 @@ let addSawmill = () => {
         } else {
             console.log("You need more resources! Sawmills require: 25 Food, 50 wood, and 25 stone.")
         }
+        console.log('Your population is low! Try adding more cottages.');
     }
 }
 let addQuarry = () => {
     if (!checkPopulation('quarrys')) {
         if (food >= 50 && ore >= 10) {
             kingdom.quarrys.units++
-            kingdom.population.total -= 4
             document.querySelector('.qurys').value = kingdom.quarrys.units
             document.querySelector('.pop').value = kingdom.population.total
         } else {
             console.log("You need more resources! Quarrys require: 50 Food and 10 ore.")
         }
+        console.log('Your population is low! Try adding more cottages.');
     }
 }
 let addMine = () => {
     if (!checkPopulation('mines')) {
         if (food >= 50 && wood >= 30 && ore >= 10) {
             kingdom.mines.units++
-            kingdom.population.total -= 4
             document.querySelector('.nms').value = kingdom.mines.units
             document.querySelector('.pop').value = kingdom.population.total
         } else {
             console.log("You need more resources! Quarrys require: 50 Food, 30 wood, and 10 ore.")
         }
+        console.log('Your population is low! Try adding more cottages.');
     }
 }
 
 let startGame = () => {
-    document.querySelector('.fd').value = resources.food.total
-    document.querySelector('.wd').value = resources.wood.total
-    document.querySelector('.stn').value = resources.stone.total
-    document.querySelector('.or').value = resources.ore.total
-    document.querySelector('.pop').value = kingdom.population.total
-    document.querySelector('.cott').value = kingdom.cottages.units
-    document.querySelector('.frm').value = kingdom.farms.units
-    document.querySelector('.swml').value = kingdom.sawmills.units
-    document.querySelector('.qurys').value = kingdom.quarrys.units
-    document.querySelector('.nms').value = kingdom.mines.units
+    htmlFood.value = food.total
+    htmlWood.value = wood.total
+    htmlStone.value = stone.total
+    htmlOre.value = ore.total
+    htmlPopulation.value = population.total
+    htmlCottages.value = cottages.units
+    htmlFarms.value = farms.units
+    htmlSawmills.value = sawmills.units
+    htmlQuarrys.value = quarrys.units
+    htmlMines.value = mines.units
 }
 startGame()
