@@ -350,7 +350,7 @@ let separate = (building) => {
     }
     updateHtml()
 }
-//Logic variables
+//game logic variables
 let cottages = kingdom.cottages
 let farms = kingdom.farms
 let sawmills = kingdom.sawmills
@@ -373,7 +373,7 @@ kingdom.farms.total += kingdom.farms.start
 kingdom.sawmills.total += kingdom.sawmills.start
 kingdom.quarrys.total += kingdom.quarrys.start
 kingdom.mines.total += kingdom.mines.start
-
+//Function that adds a cottage it conditions are met
 function addCottage() {
     if (food.total >= cottages.cost.food && wood.total >= cottages.cost.wood && stone.total >= cottages.cost.stone) {
         food.total -= cottages.cost.food
