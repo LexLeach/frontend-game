@@ -21,7 +21,7 @@
 
 <body>
     <div class="container">
-        <header>content</header>
+        <header>Project 4 - Front_End Game: A Learning Experience to rememeber.</header>
         <Div class="conatiner">
             <div class="grid-bar">
                 <div class="rss-flex">
@@ -635,3 +635,71 @@ setInterval(function () {
     updateHtml()
 }, 10000);
 ```
+
+
+
+Add a message board that will replace console logs that the user should be prompted with
+
+HTML
+
+```html
+<div class="outer">
+                    <div class="border" id="messageBoard"></div>
+                </div>
+```
+
+CSS
+
+```css
+.outer {
+    display: flex;
+    margin: 20px;
+}
+
+#messageBoard {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(90, 90, 90);
+    height: 200px;
+    width: 100%;
+    line-height: 1px;
+    overflow-y: scroll;
+    padding: 5px;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
+    border-radius: 10px;
+    text-align: center;
+}
+```
+
+JS
+
+```js
+function messageBoard(message) {
+    const logging = document.createElement('p');
+    const messageBody = document.querySelector('#messageBoard');
+    logging.innerText = message;
+    document.getElementById('messageBoard').appendChild(logging);
+    messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
