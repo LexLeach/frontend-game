@@ -87,7 +87,7 @@ let kingdom = {
             stone: 40
         },
         occupied: 0,
-        modifier: 30,
+        modifier: 13,
     },
     sawmills: {
         units: 1,
@@ -99,7 +99,7 @@ let kingdom = {
             ore: 10
         },
         occupied: 0,
-        modifier: 30,
+        modifier: 14,
     },
     quarrys: {
         units: 1,
@@ -111,7 +111,7 @@ let kingdom = {
             ore: 10
         },
         occupied: 0,
-        modifier: 15,
+        modifier: 7,
     },
     mines: {
         units: 1,
@@ -123,7 +123,7 @@ let kingdom = {
             ore: 10
         },
         occupied: 0,
-        modifier: 10,
+        modifier: 5,
     },
     soldiers: {
         types: []
