@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Project 4</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -275,7 +275,7 @@ let resources = {
         total: 0
     },
     ore: {
-        start: 15,
+        start: 150,
         modifier: 0,
         total: 0
     },
@@ -396,17 +396,50 @@ let troops = {
 
 
 
-Set some variable for the buttons to link to the html
+Set some variables tp easily access the webpage
 
 
 
 ```js
-let addCottage = document.querySelector('.add-cottage')
-let addFarm = document.querySelector('.add-farm')
-let addSawmill = document.querySelector('.add-sawmill')
-let addQuarry = document.querySelector('.add-quarry')
-let addMine = document.querySelector('.add-mine')
+//html variables
+let htmlFood = document.querySelector('.fd')
+let htmlWood = document.querySelector('.wd')
+let htmlStone = document.querySelector('.stn')
+let htmlOre = document.querySelector('.or')
+let htmlPopulation = document.querySelector('.pop')
+let htmlCottages = document.querySelector('.cott')
+let htmlFarms = document.querySelector('.frm')
+let htmlSawmills = document.querySelector('.swml')
+let htmlQuarrys = document.querySelector('.qurys')
+let htmlMines = document.querySelector('.nms')
+let addCottageBtn = document.querySelector('.add-cottage')
+let addFarmBtn = document.querySelector('.add-farm')
+let addSawmillBtn = document.querySelector('.add-sawmill')
+let addQuarryBtn = document.querySelector('.add-quarry')
+let addMineBtn = document.querySelector('.add-mine')
 ```
+
+
+
+Add some variables to easily access the games logic
+
+
+
+```js
+//game logic variables
+let cottages = kingdom.cottages
+let farms = kingdom.farms
+let sawmills = kingdom.sawmills
+let quarrys = kingdom.quarrys
+let mines = kingdom.mines
+let population = kingdom.population
+let food = resources.food
+let wood = resources.wood
+let stone = resources.stone
+let ore = resources.ore
+```
+
+
 
 
 
@@ -415,14 +448,23 @@ Set the game start with start rss values
 
 
 ```js
+//Function to populate the webpage with starting vaules
 let startGame = () => {
-    document.querySelector('.fd').value = resources.food.total
-    document.querySelector('.wd').value = resources.wood.total
-    document.querySelector('.stn').value = resources.stone.total
-    document.querySelector('.or').value = resources.ore.total
-    document.querySelector('.pop').value = kingdom.population.total
+    updateHtml()
 }
 startGame()
+
+//Sets starting values to current totals on page load
+resources.food.total += resources.food.start
+resources.wood.total += resources.wood.start
+resources.stone.total += resources.stone.start
+resources.ore.total += resources.ore.start
+kingdom.population.total += kingdom.population.start
+kingdom.cottages.total += kingdom.cottages.start
+kingdom.farms.total += kingdom.farms.start
+kingdom.sawmills.total += kingdom.sawmills.start
+kingdom.quarrys.total += kingdom.quarrys.start
+kingdom.mines.total += kingdom.mines.start
 ```
 
 
@@ -432,56 +474,164 @@ Add event listeners for the buttons to trigger button clicks
 
 
 ```js
-addCottage.addEventListener('click', () => {
-    kingdom.cottages.units++
-    kingdom.population.total += kingdom.cottages.modifier
-    document.querySelector('.cott').value = kingdom.cottages.units
-    document.querySelector('.pop').value = kingdom.population.total
-    console.log(kingdom.population.total)
+//Event listeners
+addCottageBtn.addEventListener('click', () => {
+    separate('cottage')
 })
-addFarm.addEventListener('click', () => {
-    kingdom.farms.units++
-    kingdom.population.total -= 2
-    document.querySelector('.frm').value = kingdom.farms.units
-    document.querySelector('.pop').value = kingdom.population.total
-    console.log("Pop Total");
-    console.log(kingdom.population.total)
+addFarmBtn.addEventListener('click', () => {
+    separate('farm')
 })
-addSawmill.addEventListener('click', () => {
-    kingdom.sawmills.units++
-    kingdom.population.total -= 3
-    document.querySelector('.swml').value = kingdom.sawmills.units
-    document.querySelector('.pop').value = kingdom.population.total
+addSawmillBtn.addEventListener('click', () => {
+    separate('sawmill')
 })
-addQuarry.addEventListener('click', () => {
-    kingdom.quarrys.units++
-    kingdom.population.total -= 4
-    document.querySelector('.qurys').value = kingdom.quarrys.units
-    document.querySelector('.pop').value = kingdom.population.total
+addQuarryBtn.addEventListener('click', () => {
+    separate('quarry')
 })
-addMine.addEventListener('click', () => {
-    kingdom.mines.units++
-    kingdom.population.total -= 4
-    document.querySelector('.nms').value = kingdom.mines.units
-    document.querySelector('.pop').value = kingdom.population.total
+addMineBtn.addEventListener('click', () => {
+    separate('mine')
 })
 ```
 
 
 
+Add functions to check and reflect what the but asks for if conditions are met
 
 
 
+```js
+function addCottage() {
+    if (food.total >= cottages.cost.food && wood.total >= cottages.cost.wood && stone.total >= cottages.cost.stone) {
+        food.total -= cottages.cost.food
+        wood.total -= cottages.cost.wood
+        stone.total -= cottages.cost.stone
+        cottages.units++
+        population.total += cottages.modifier
+    } else {
+        console.log("You need more resources! Cottages require: 20 Food, 50 wood, and 25 stone.")
+    }
+}
+
+function addFarm() {
+    let populationReq = farms.populationRequired
+    if (population.total >= populationReq) {
+        if (food.total >= farms.cost.food && wood.total >= farms.cost.wood && stone.total >= farms.cost.stone) {
+            food.total -= farms.cost.food
+            wood.total -= farms.cost.wood
+            stone.total -= farms.cost.stone
+            population.total -= 2
+            farms.units++
+        } else {
+            console.log("You need more resources! Farms require: 20 Food, 25 wood, and 40 stone.")
+        }
+    } else {
+        console.log('Your population is low! Try adding more cottages.')
+    }
+}
+
+function addSawmill() {
+    let populationReq = sawmills.populationRequired
+    if (population.total >= populationReq) {
+        if (food.total >= sawmills.cost.food && wood.total >= sawmills.cost.wood && stone.total >= sawmills.cost.stone) {
+            food.total -= sawmills.cost.food
+            wood.total -= sawmills.cost.wood
+            stone.total -= sawmills.cost.stone
+            population.total -= 3
+            sawmills.units++
+        } else {
+            console.log("You need more resources! Sawmills require: 25 Food, 50 wood, and 25 stone.")
+        }
+    } else {
+        console.log('Your population is low! Try adding more cottages.');
+    }
+}
+
+function addQuarry() {
+    let populationReq = quarrys.populationRequired
+    if (population.total >= populationReq) {
+        if (food.total >= quarrys.cost.food && ore.total >= quarrys.cost.ore) {
+            food.total -= quarrys.cost.food
+            ore.total -= quarrys.cost.ore
+            population.total -= 4
+            quarrys.units++
+        } else {
+            console.log("You need more resources! Quarrys require: 50 Food and 10 ore.")
+        }
+    } else {
+        console.log('Your population is low! Try adding more cottages.');
+    }
+}
+
+function addMine() {
+    let populationReq = mines.populationRequired
+    if (population.total >= populationReq) {
+        if (food.total >= mines.cost.food && wood.total >= mines.cost.wood && ore.total >= mines.cost.ore) {
+            food.total -= mines.cost.food
+            wood.total -= mines.cost.wood
+            ore.total -= mines.cost.ore
+            population.total -= 4
+            mines.units++
+        } else {
+            console.log("You need more resources! Mines require: 50 Food, 30 wood, and 10 ore.")
+        }
+    } else {
+        console.log('Your population is low! Try adding more cottages.');
+    }
+}
+```
 
 
 
+Add a way to separate html updates from game logic updates
 
 
 
+```js
+//Function to separate 
+let separate = (building) => {
+    if (building === 'cottage') {
+        addCottage()
+    }
+    if (building === 'farm') {
+        addFarm()
+    }
+    if (building === 'sawmill') {
+        addSawmill()
+    }
+    if (building === 'quarry') {
+        addQuarry()
+    }
+    if (building === 'mine') {
+        addMine()
+    }
+    updateHtml()
+}
+//Function that updates all html on the webpage
+function updateHtml() {
+    htmlFood.value = food.total
+    htmlWood.value = wood.total
+    htmlStone.value = stone.total
+    htmlOre.value = ore.total
+    htmlPopulation.value = population.total
+    htmlCottages.value = cottages.units
+    htmlFarms.value = farms.units
+    htmlSawmills.value = sawmills.units
+    htmlQuarrys.value = quarrys.units
+    htmlMines.value = mines.units
+}
+```
 
 
 
+Add a set interval to add rss based on how many rss buildings you have multiplied their respective modifier
 
 
 
-
+```js
+setInterval(function () {
+    food.total += farms.units * farms.modifier
+    wood.total += sawmills.units * sawmills.modifier
+    stone.total += quarrys.units * quarrys.modifier
+    ore.total += mines.units * mines.modifier
+    updateHtml()
+}, 10000);
+```
