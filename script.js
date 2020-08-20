@@ -402,7 +402,8 @@ function addFarm() {
         console.log('Your population is low! Try adding more cottages.')
     }
 }
-let addSawmill = () => {
+
+function addSawmill() {
     let populationReq = sawmills.populationRequired
     if (population.total >= populationReq) {
         if (food.total >= sawmills.cost.food && wood.total >= sawmills.cost.wood && stone.total >= sawmills.cost.stone) {
@@ -418,7 +419,8 @@ let addSawmill = () => {
         console.log('Your population is low! Try adding more cottages.');
     }
 }
-let addQuarry = () => {
+
+function addQuarry() {
     let populationReq = quarrys.populationRequired
     if (population.total >= populationReq) {
         if (food.total >= quarrys.cost.food && ore.total >= quarrys.cost.ore) {
@@ -433,13 +435,14 @@ let addQuarry = () => {
         console.log('Your population is low! Try adding more cottages.');
     }
 }
-let addMine = () => {
+
+function addMine() {
     let populationReq = mines.populationRequired
     if (population.total >= populationReq) {
         if (food.total >= mines.cost.food && wood.total >= mines.cost.wood && ore.total >= mines.cost.ore) {
             food.total -= mines.cost.food
             wood.total -= mines.cost.wood
-            ore.total -= ore.cost.stone
+            ore.total -= mines.cost.ore
             population.total -= 4
             mines.units++
         } else {
