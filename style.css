@@ -12,6 +12,9 @@ body {
 
 header {
     grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-bottom: 0.1px solid rgba(123, 123, 123, 0.6);
     background: #515151;
     height: 100px;
