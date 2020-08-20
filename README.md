@@ -687,11 +687,60 @@ function messageBoard(message) {
 
 
 
+Add soldiers into the game. Let the user use population to build an army!
+
+```js
+
+```
 
 
 
 
 
+1. Setup a interval that removed food based on population count and population modifier (EX: 1 citizen eats 1 food every so often)
+2. Plan out randon encounters - Earth quake has shaken the town, 150 food has spoiled, repairs cost 300 wood, 150 stone, and 30 ore. Stuf like that.
+
+```js
+//Interval to remove food based on population consumption
+```
+
+```js
+//Random event encounter
+```
+
+
+
+Add img to the html for the kingdom and later on use JS to hide populate more building/add popup dialogue text
+
+Work on PS image for the kingdom, house need better positioning and add a blacksmith\*\*\*
+
+```html
+<div class="kingdomImg"></div>
+```
+
+CSS
+
+```css
+.kingdomImg {
+    background-image: url("./images/Kingdom.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 350px;
+    width: 100%;
+    box-shadow: inset 0 0 10px #000000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+```
+
+
+
+Add in villager assets and later on use JS to hide populate more villagers/add popup dialogue text
+
+JS
+
+```css
+
+```
 
 
 
