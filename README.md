@@ -622,7 +622,7 @@ function updateHtml() {
 
 
 
-Add a set interval to add rss based on how many rss building you have time their respective modifier
+Add a set interval to add rss based on how many rss buildings you have multiplied their respective modifier
 
 
 
