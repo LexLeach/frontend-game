@@ -46,6 +46,15 @@ addQuarryBtn.addEventListener('click', () => {
 addMineBtn.addEventListener('click', () => {
     separate('mine')
 })
+
+function messageBoard(message) {
+    const logging = document.createElement('p');
+    const messageBody = document.querySelector('#messageBoard');
+    logging.innerText = message;
+    document.getElementById('messageBoard').appendChild(logging);
+    messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+}
+
 //Objects
 let kingdom = {
     population: {
@@ -382,7 +391,7 @@ function addCottage() {
         cottages.units++
         population.total += cottages.modifier
     } else {
-        console.log("You need more resources! Cottages require: 20 Food, 50 wood, and 25 stone.")
+        messageBoard("You need more resources! Cottages require: 20 Food, 50 wood, and 25 stone.")
     }
 }
 
@@ -396,10 +405,10 @@ function addFarm() {
             population.total -= 2
             farms.units++
         } else {
-            console.log("You need more resources! Farms require: 20 Food, 25 wood, and 40 stone.")
+            messageBoard("You need more resources! Farms require: 20 Food, 25 wood, and 40 stone.")
         }
     } else {
-        console.log('Your population is low! Try adding more cottages.')
+        messageBoard('Your population is low! Try adding more cottages.')
     }
 }
 
@@ -413,10 +422,10 @@ function addSawmill() {
             population.total -= 3
             sawmills.units++
         } else {
-            console.log("You need more resources! Sawmills require: 25 Food, 50 wood, and 25 stone.")
+            messageBoard("You need more resources! Sawmills require: 25 Food, 50 wood, and 25 stone.")
         }
     } else {
-        console.log('Your population is low! Try adding more cottages.');
+        messageBoard('Your population is low! Try adding more cottages.');
     }
 }
 
@@ -429,10 +438,10 @@ function addQuarry() {
             population.total -= 4
             quarrys.units++
         } else {
-            console.log("You need more resources! Quarrys require: 50 Food and 10 ore.")
+            messageBoard("You need more resources! Quarrys require: 50 Food and 10 ore.")
         }
     } else {
-        console.log('Your population is low! Try adding more cottages.');
+        messageBoard('Your population is low! Try adding more cottages.');
     }
 }
 
@@ -446,10 +455,10 @@ function addMine() {
             population.total -= 4
             mines.units++
         } else {
-            console.log("You need more resources! Mines require: 50 Food, 30 wood, and 10 ore.")
+            messageBoard("You need more resources! Mines require: 50 Food, 30 wood, and 10 ore.")
         }
     } else {
-        console.log('Your population is low! Try adding more cottages.');
+        messageBoard('Your population is low! Try adding more cottages.');
     }
 }
 
