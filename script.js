@@ -331,7 +331,7 @@ let startGame = () => {
     updateHtml()
 }
 
-//Separation Function
+//Function to separate 
 let separate = (building) => {
     if (building === 'cottage') {
         addCottage()
@@ -389,11 +389,11 @@ function addCottage() {
 function addFarm() {
     let populationReq = farms.populationRequired
     if (population.total >= populationReq) {
-        population.total -= 2
         if (food.total >= farms.cost.food && wood.total >= farms.cost.wood && stone.total >= farms.cost.stone) {
             food.total -= farms.cost.food
             wood.total -= farms.cost.wood
             stone.total -= farms.cost.stone
+            population.total -= 2
             farms.units++
         } else {
             console.log("You need more resources! Farms require: 20 Food, 25 wood, and 40 stone.")
@@ -405,11 +405,11 @@ function addFarm() {
 let addSawmill = () => {
     let populationReq = sawmills.populationRequired
     if (population.total >= populationReq) {
-        population.total -= 3
         if (food.total >= sawmills.cost.food && wood.total >= sawmills.cost.wood && stone.total >= sawmills.cost.stone) {
             food.total -= sawmills.cost.food
             wood.total -= sawmills.cost.wood
             stone.total -= sawmills.cost.stone
+            population.total -= 3
             sawmills.units++
         } else {
             console.log("You need more resources! Sawmills require: 25 Food, 50 wood, and 25 stone.")
@@ -421,10 +421,10 @@ let addSawmill = () => {
 let addQuarry = () => {
     let populationReq = quarrys.populationRequired
     if (population.total >= populationReq) {
-        population.total -= 4
         if (food.total >= quarrys.cost.food && ore.total >= quarrys.cost.ore) {
             food.total -= quarrys.cost.food
             ore.total -= quarrys.cost.ore
+            population.total -= 4
             quarrys.units++
         } else {
             console.log("You need more resources! Quarrys require: 50 Food and 10 ore.")
@@ -436,11 +436,11 @@ let addQuarry = () => {
 let addMine = () => {
     let populationReq = mines.populationRequired
     if (population.total >= populationReq) {
-        population.total -= 4
         if (food.total >= mines.cost.food && wood.total >= mines.cost.wood && ore.total >= mines.cost.ore) {
             food.total -= mines.cost.food
             wood.total -= mines.cost.wood
             ore.total -= ore.cost.stone
+            population.total -= 4
             mines.units++
         } else {
             console.log("You need more resources! Mines require: 50 Food, 30 wood, and 10 ore.")
