@@ -1,6 +1,52 @@
+How to play
+
+The goal of the game is to see how fast you can reach max-level castle. (Level 10 Castle)
+
+You start with some basic resources and 1 of each building. Cottages provide 4 villagers to your population. Since you start with 1 cottage, you start with 4 villagers in your population.
+
+Each building has a resource cost attached to it.
+
+1. Cottages cost: 20 food, 50 wood, 25 stone, and 0 ore
+2. Farms cost: 20 food, 25 wood, 40 stone, and 0 ore
+3. Sawmills cost: 25 food, 50 wood, 20 stone, and 0 ore
+4. Quarrys cost: 50 food, 0 wood, 0 stone, and 10 ore
+5. Mines cost: 50 food, 30 wood, 0 stone, and 10 ore
+
+Each building has a total output it will produce every 30 seconds multiplied by the total number of buildings in a single type. Ex: Each farm produces 13 food every 30s, 2 farms will produce 26 food every 30s and so forth.
+
+Your castle can be leveled up but each levelup cost a certain amount of resources. You start with a level 1 castle
+
+* Level 2 cost: 500 food, 500 wood, and 700 stone
+* Level 3 cost: 1500 food, 1500 wood, 1700 stone, and 200 ore
+* Level 4 cost: 2500 food, 2500 wood, 2700 stone, and 700 ore
+* Level 5 cost: 3500 food, 3500 wood, 3700 stone, and 1200 ore
+* Level 6 cost: 4500 food, 4500 wood, 4700 stone, and 1700 ore
+* Level 7 cost: 5500 food, 5500 wood, 5700 stone, and 2700 ore
+* Level 8 cost: 6500 food, 6500 wood, 6700 stone, and 3700 ore
+* Level 9 cost: 7500 food, 7500 wood, 7700 stone, and 4700 ore
+* Level 10 cost: 8500 food, 8500 wood, 8700 stone, and 5700 ore
+
+Stay tuned for future content updates including:
+
+* Armies!
+* Crafting!
+* Currency!
+* Marketplace to buy or trade(Thanks Tim for suggest a trading option!) resources and other fun items or buffs!
+* Random encounters!
+* Bandit brawls!
+* Achievements!
+* Buffs and debuffs!
+* And much much more!
+
+Just because this is a class project doesn’t mean it ends here. I’m already to invested and enjoying every minute of it!
+
+
+
+Below is my current progress and To-Do list. Feel free to add an issue with bugs or if you just want to suggest a feature!
+
+
+
 **Things To-Do**
-
-
 
 
 
@@ -741,14 +787,3 @@ JS
 ```css
 
 ```
-
-
-
-
-
-
-
-
-
-
-

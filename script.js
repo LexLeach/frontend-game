@@ -693,7 +693,7 @@ setInterval(function () {
     stone.total += quarrys.units * quarrys.modifier
     ore.total += mines.units * mines.modifier
     updateHtml()
-}, 10000);
+}, 18000);
 
 function randomString(id) {
     let randomIndex = Math.floor(Math.random() * id.length)
