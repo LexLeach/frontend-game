@@ -1,6 +1,7 @@
 //HTML logic above object variables
 
 //html variables
+let htmlCastle = document.querySelector('.cstle')
 let htmlFood = document.querySelector('.fd')
 let htmlWood = document.querySelector('.wd')
 let htmlStone = document.querySelector('.stn')
@@ -11,6 +12,7 @@ let htmlFarms = document.querySelector('.frm')
 let htmlSawmills = document.querySelector('.swml')
 let htmlQuarrys = document.querySelector('.qurys')
 let htmlMines = document.querySelector('.nms')
+let lvlUp = document.querySelector('.lvl-up')
 let addCottageBtn = document.querySelector('.add-cottage')
 let addFarmBtn = document.querySelector('.add-farm')
 let addSawmillBtn = document.querySelector('.add-sawmill')
@@ -18,6 +20,7 @@ let addQuarryBtn = document.querySelector('.add-quarry')
 let addMineBtn = document.querySelector('.add-mine')
 
 function updateHtml() {
+    htmlCastle.value = castle.level
     htmlFood.value = food.total
     htmlWood.value = wood.total
     htmlStone.value = stone.total
@@ -31,6 +34,10 @@ function updateHtml() {
 }
 
 //Event listeners
+lvlUp.addEventListener('click', () => {
+    console.log('Clicked!')
+    checkCastleLvl()
+})
 addCottageBtn.addEventListener('click', () => {
     separate('cottage')
 })
@@ -65,7 +72,63 @@ let kingdom = {
         total: 0
     },
     castle: {
+        start: 1,
         level: 0,
+        lvlUpCost: {
+            level2: {
+                food: 500,
+                wood: 500,
+                stone: 700
+            },
+            level3: {
+                food: 1500,
+                wood: 1500,
+                stone: 1700,
+                ore: 200
+            },
+            level4: {
+                food: 2500,
+                wood: 2500,
+                stone: 2700,
+                ore: 700
+            },
+            level5: {
+                food: 3500,
+                wood: 3500,
+                stone: 3700,
+                ore: 1200
+            },
+            level6: {
+                food: 4500,
+                wood: 4500,
+                stone: 4700,
+                ore: 1700
+            },
+            level7: {
+                food: 5500,
+                wood: 5500,
+                stone: 5700,
+                ore: 2700
+            },
+            level8: {
+                food: 6500,
+                wood: 6500,
+                stone: 6700,
+                ore: 3700
+            },
+            level9: {
+                food: 7500,
+                wood: 7500,
+                stone: 7700,
+                ore: 4700
+            },
+            level10: {
+                food: 8500,
+                wood: 8500,
+                stone: 8700,
+                ore: 5700
+            }
+        },
         buff: 0,
         lvlcap: 10
     },
@@ -337,7 +400,7 @@ let random_encounter = {
 */
 let randomCottageResponse = ["Realtor asks his employee why he quit his last job selling duct tape after three months, the employee said he just couldnt stick with it. Cottage +1", "Yup, you did it. You purchased the last one. All outta cottages now. Just kidding! :D Cottage +1", "Here, have a Cottage! Cottage +1", "ALRIGHT! Take the cottage and go! Cottage +1"]
 let randomFarmResponse = ['Ohhh so you wanted a farm huh, well you shall have it! Farm +1', 'They do say food is the way to a mans heart, one farm coming up! Farm +1', 'Yea yea, heres your farm. Farm +1', 'YOU SHALL NOT PASS!, but you can have a farm. Farm +1']
-let randomSawmillResponse = ['FOREST KILLER! Sawmill +1', 'Tree lives matter too! Farm +1', 'How do trees get online? They just log in, farm +1', 'Whats a trees favorite dating app?, Timber. farm +1']
+let randomSawmillResponse = ['FOREST KILLER! Sawmill +1', 'Welp, goodbye forests! Sawmill +1', 'How do trees get online? They just log in, Sawmill +1', 'Whats a trees favorite dating app?, Timber. Sawmill +1']
 let randomQuarryResponse = ['What do you call an underage kid that works in a quarry? A miner. Quarry +1', 'Did you hear about the quarry over in Kingdom 3? It went bankrupt. They said it hit rock bottom. Quarry +1', 'When were rock puns the funniest? Durning the stone age. Quarry +1']
 let randomMineResponse = ['What state do miners avoid? Ore gon. Mine +1', 'Why are miners good accomplices? They mine thier own business. Mine +1', 'Yea Im outta mining pun, just take you mine and begone. Mine +1', 'high oh, high oh, off to work we go. Mine +1']
 //Game logic below objects variables
@@ -367,6 +430,8 @@ let separate = (building) => {
     updateHtml()
 }
 //game logic variables
+let castle = kingdom.castle
+let cost = castle.lvlUpCost
 let cottages = kingdom.cottages
 let farms = kingdom.farms
 let sawmills = kingdom.sawmills
@@ -379,6 +444,7 @@ let stone = resources.stone
 let ore = resources.ore
 
 //Sets starting values to current totals on page load
+castle.level += castle.start
 resources.food.total += resources.food.start
 resources.wood.total += resources.wood.start
 resources.stone.total += resources.stone.start
@@ -389,7 +455,125 @@ kingdom.farms.total += kingdom.farms.start
 kingdom.sawmills.total += kingdom.sawmills.start
 kingdom.quarrys.total += kingdom.quarrys.start
 kingdom.mines.total += kingdom.mines.start
-//Function that adds a cottage it conditions are met
+
+function checkCastleLvl() {
+    let currentLevel = castle.level
+    let nextLevel = currentLevel + 1
+    lvlUpCastle(nextLevel)
+
+}
+
+function lvlUpCastle(lvl) {
+    if (lvl === 2) {
+        if (food.total >= cost.level2.food && wood.total >= cost.level2.wood && stone.total >= cost.level2.stone) {
+            food.total -= cost.level2.food
+            wood.total -= cost.level2.wood
+            stone.total -= cost.level2.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+    if (lvl === 3) {
+        if (food.total >= cost.level3.food && wood.total >= cost.level3.wood && stone.total >= cost.level3.stone) {
+            food.total -= cost.level3.food
+            wood.total -= cost.level3.wood
+            stone.total -= cost.level3.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+    if (lvl === 4) {
+        if (food.total >= cost.level4.food && wood.total >= cost.level4.wood && stone.total >= cost.level4.stone) {
+            food.total -= cost.level4.food
+            wood.total -= cost.level4.wood
+            stone.total -= cost.level4.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+    if (lvl === 5) {
+        if (food.total >= cost.level5.food && wood.total >= cost.level5.wood && stone.total >= cost.level5.stone) {
+            food.total -= cost.level5.food
+            wood.total -= cost.level5.wood
+            stone.total -= cost.level5.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+    if (lvl === 6) {
+        if (food.total >= cost.level6.food && wood.total >= cost.level6.wood && stone.total >= cost.level6.stone) {
+            food.total -= cost.level6.food
+            wood.total -= cost.level6.wood
+            stone.total -= cost.level6.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+    if (lvl === 7) {
+        if (food.total >= cost.level7.food && wood.total >= cost.level7.wood && stone.total >= cost.level7.stone) {
+            food.total -= cost.level7.food
+            wood.total -= cost.level7.wood
+            stone.total -= cost.level7.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+    if (lvl === 8) {
+        if (food.total >= cost.level8.food && wood.total >= cost.level8.wood && stone.total >= cost.level8.stone) {
+            food.total -= cost.level8.food
+            wood.total -= cost.level8.wood
+            stone.total -= cost.level8.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+    if (lvl === 9) {
+        if (food.total >= cost.level9.food && wood.total >= cost.level9.wood && stone.total >= cost.level9.stone) {
+            food.total -= cost.level9.food
+            wood.total -= cost.level9.wood
+            stone.total -= cost.level9.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+    if (lvl === 10) {
+        if (food.total >= cost.level10.food && wood.total >= cost.level10.wood && stone.total >= cost.level10.stone) {
+            food.total -= cost.level10.food
+            wood.total -= cost.level10.wood
+            stone.total -= cost.level10.stone
+            castle.level++
+            updateHtml()
+            //randomString(randomCastleResponse)
+        } else {
+            messageBoard("You need more resources to levelup your Castle!")
+        }
+    }
+}
+
 function addCottage() {
     if (food.total >= cottages.cost.food && wood.total >= cottages.cost.wood && stone.total >= cottages.cost.stone) {
         food.total -= cottages.cost.food
