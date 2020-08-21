@@ -1,3 +1,5 @@
+Verison 1.0
+
 How to play
 
 The goal of the game is to see how fast you can reach max-level catle. (Level 10 Castle)
