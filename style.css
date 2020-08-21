@@ -85,11 +85,18 @@ select:focus {
 }
 
 .kingdomImg {
-    background-image: url("./images/Kingdom.png");
+    /* background-image: url("./images/Kingdom.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     height: 350px;
     width: 100%;
+    box-shadow: inset 0 0 10px #000000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.kingdomBgImg {
+    width: 100%;
+    height: 350px;
     box-shadow: inset 0 0 10px #000000;
     border-bottom: 1px solid rgba(0, 0, 0, 0.8);
 }

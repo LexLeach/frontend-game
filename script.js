@@ -55,6 +55,8 @@ function messageBoard(message) {
     messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 }
 
+
+
 //Objects
 let kingdom = {
     population: {
@@ -154,7 +156,7 @@ let resources = {
 }
 
 let troops = {
-    level_1: {
+    level1: {
         warrior: {
             name: "Warrior",
             level: 1,
@@ -186,7 +188,7 @@ let troops = {
             weakness: "range"
         }
     },
-    level_2: {
+    level2: {
         swordsmen: {
             name: "Swordsmen",
             level: 2,
@@ -218,7 +220,7 @@ let troops = {
             weakness: "range"
         }
     },
-    level_3: {
+    level3: {
         swordsmen: {
             name: "Swordsmen",
             level: 3,
@@ -333,6 +335,9 @@ let random_encounter = {
     }
 }
 */
+let randomCottageResponse = ["You purchased a Cottage! Much awe, Much food, Much growth!", "Yup, you did it. You purchased the last one. All outta cottage now. Just kidding! :D", "Here, have a Cottage!", "ALRIGHT! Take the cottage and go!"]
+
+
 //Game logic below objects variables
 
 //Function to populate the webpage with starting vaules
@@ -390,6 +395,7 @@ function addCottage() {
         stone.total -= cottages.cost.stone
         cottages.units++
         population.total += cottages.modifier
+        randomString(randomCottageResponse)
     } else {
         messageBoard("You need more resources! Cottages require: 20 Food, 50 wood, and 25 stone.")
     }
@@ -469,5 +475,11 @@ setInterval(function () {
     ore.total += mines.units * mines.modifier
     updateHtml()
 }, 10000);
+
+function randomString(id) {
+    let randomIndex = Math.floor(Math.random() * id.length)
+    let randomMsgString = id[randomIndex]
+    messageBoard(randomMsgString)
+}
 
 startGame()
