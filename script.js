@@ -335,8 +335,8 @@ let random_encounter = {
     }
 }
 */
-let randomCottageResponse = ["You purchased a Cottage! Much awe, Much food, Much growth!", "Yup, you did it. You purchased the last one. All outta cottage now. Just kidding! :D", "Here, have a Cottage!", "ALRIGHT! Take the cottage and go!"]
-
+let randomCottageResponse = ["You purchased a Cottage! Much awe, Much food, Much growth!", "Yup, you did it. You purchased the last one. All outta cottages now. Just kidding! :D", "Here, have a Cottage!", "ALRIGHT! Take the cottage and go!"]
+let randomFarmResponse = ['Ohhh so you wanted a farm huh, well you shall have it!', 'They do say food is the way to a mans heart, one farm coming up!', 'Yea yea, heres your farm.', 'YOU SHALL NOT PASS!, but you can have a farm.']
 
 //Game logic below objects variables
 
@@ -410,6 +410,7 @@ function addFarm() {
             stone.total -= farms.cost.stone
             population.total -= 2
             farms.units++
+            randomString(randomFarmResponse)
         } else {
             messageBoard("You need more resources! Farms require: 20 Food, 25 wood, and 40 stone.")
         }
