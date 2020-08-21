@@ -398,11 +398,41 @@ let random_encounter = {
     }
 }
 */
-let randomCottageResponse = ["Realtor asks his employee why he quit his last job selling duct tape after three months, the employee said he just couldnt stick with it. Cottage +1", "Yup, you did it. You purchased the last one. All outta cottages now. Just kidding! :D Cottage +1", "Here, have a Cottage! Cottage +1", "ALRIGHT! Take the cottage and go! Cottage +1"]
-let randomFarmResponse = ['Ohhh so you wanted a farm huh, well you shall have it! Farm +1', 'They do say food is the way to a mans heart, one farm coming up! Farm +1', 'Yea yea, heres your farm. Farm +1', 'YOU SHALL NOT PASS!, but you can have a farm. Farm +1']
-let randomSawmillResponse = ['FOREST KILLER! Sawmill +1', 'Welp, goodbye forests! Sawmill +1', 'How do trees get online? They just log in, Sawmill +1', 'Whats a trees favorite dating app?, Timber. Sawmill +1']
-let randomQuarryResponse = ['What do you call an underage kid that works in a quarry? A miner. Quarry +1', 'Did you hear about the quarry over in Kingdom 3? It went bankrupt. They said it hit rock bottom. Quarry +1', 'When were rock puns the funniest? Durning the stone age. Quarry +1']
-let randomMineResponse = ['What state do miners avoid? Ore gon. Mine +1', 'Why are miners good accomplices? They mine thier own business. Mine +1', 'Yea Im outta mining pun, just take you mine and begone. Mine +1', 'high oh, high oh, off to work we go. Mine +1']
+let randomCastleResponse = [
+    'You leveled up your Castle! Much awe! Castle lvl +1',
+    'Your villagers are pleased with the growth of the kingdom! Castle lvl +1',
+    'The villagers are saying that it might actually be worth living here soon. Possibly...Castle lvl +1',
+    'Your starting to get the hang of this! Keep up the good work my liege!'
+]
+let randomCottageResponse = [
+    "Realtor asks his employee why he quit his last job selling duct tape after three months, the employee said he just couldnt stick with it. Cottage +1",
+    "Yup, you did it. You purchased the last one. All outta cottages now. Just kidding! :D Cottage +1",
+    "Here, have a Cottage! Cottage +1",
+    "ALRIGHT! Take the cottage and go! Cottage +1"
+]
+let randomFarmResponse = [
+    'Ohhh so you wanted a farm huh, well you shall have it! Farm +1',
+    'They do say food is the way to a mans heart, one farm coming up! Farm +1',
+    'Yea yea, heres your farm. Farm +1',
+    'YOU SHALL NOT PASS!, but you can have a farm. Farm +1'
+]
+let randomSawmillResponse = [
+    'FOREST KILLER! Sawmill +1',
+    'Welp, goodbye forests! Sawmill +1',
+    'How do trees get online? They just log in, Sawmill +1',
+    'Whats a trees favorite dating app?, Timber. Sawmill +1'
+]
+let randomQuarryResponse = [
+    'What do you call an underage kid that works in a quarry? A miner. Quarry +1',
+    'Did you hear about the quarry over in Kingdom 3? It went bankrupt. They said it hit rock bottom. Quarry +1',
+    'When were rock puns the funniest? Durning the stone age. Quarry +1'
+]
+let randomMineResponse = [
+    'What state do miners avoid? Ore gon. Mine +1',
+    'Why are miners good accomplices? They mine thier own business. Mine +1',
+    'Yea Im outta mining pun, just take you mine and begone. Mine +1',
+    'high oh, high oh, off to work we go. Mine +1'
+]
 //Game logic below objects variables
 
 //Function to populate the webpage with starting vaules
@@ -471,7 +501,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level2.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
@@ -483,7 +513,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level3.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
@@ -495,7 +525,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level4.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
@@ -507,7 +537,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level5.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
@@ -519,7 +549,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level6.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
@@ -531,7 +561,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level7.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
@@ -543,7 +573,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level8.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
@@ -555,7 +585,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level9.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
@@ -567,7 +597,7 @@ function lvlUpCastle(lvl) {
             stone.total -= cost.level10.stone
             castle.level++
             updateHtml()
-            //randomString(randomCastleResponse)
+            randomString(randomCastleResponse)
         } else {
             messageBoard("You need more resources to levelup your Castle!")
         }
