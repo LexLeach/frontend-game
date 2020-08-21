@@ -1,4 +1,12 @@
+html {
+    margin: 0;
+}
+
+
 body {
+    display: flex;
+    background: #515151;
+    width: 100%;
     margin: 0;
 }
 
@@ -17,6 +25,7 @@ header {
     align-items: center;
     border-bottom: 0.1px solid rgba(123, 123, 123, 0.6);
     background: #515151;
+    width: 100%;
     height: 100px;
 }
 
@@ -32,8 +41,13 @@ header {
 .rss-flex {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
 
+}
+
+.flex-rss {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .rss-num {
@@ -95,6 +109,14 @@ select:focus {
     margin-left: 10px;
 }
 
+.add-cottage,
+.add-farm,
+.add-sawmill,
+.add-quarry,
+.add-mine {
+    font-size: 18px;
+}
+
 .kingdomImg {
     /* background-image: url("./images/Kingdom.png");
     background-repeat: no-repeat;
@@ -130,4 +152,81 @@ select:focus {
     box-shadow: inset 0 0 10px #000000;
     border-radius: 10px;
     text-align: center;
+}
+
+@media (max-width: 760px) {
+    .conatiner {
+        grid-template-areas:
+            "header header"
+            "stats stats"
+            "game game"
+    }
+
+    header {
+        display: none;
+    }
+
+    header h1 {
+        font-size: 14px;
+    }
+
+    .grid-bar {
+        height: 100px;
+    }
+
+    .rss-flex {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex-rss {
+        margin-top: -25px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .food,
+    .wood,
+    .stone,
+    .ore,
+    .soldiers {
+        margin-left: 15px;
+    }
+
+    .castle-flex {
+        height: 30px;
+    }
+
+    .castle {
+        margin-top: -25px;
+    }
+
+    .castle-btn {
+        margin-top: -25px;
+    }
+
+    .population,
+    .cottages,
+    .farms,
+    .sawmills,
+    .quarrys,
+    .mines {
+        margin-right: 1px;
+        margin-left: 1px;
+    }
+
+    .add-cottage,
+    .add-farm,
+    .add-sawmill,
+    .add-quarry,
+    .add-mine {
+        font-size: 12px;
+    }
+
+    .kingdom-flex {
+        font-size: 12px;
+        justify-content: center;
+        align-items: center;
+    }
 }
