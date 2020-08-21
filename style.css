@@ -84,6 +84,17 @@ select:focus {
     justify-content: space-around;
 }
 
+.castle-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.castle-flex button {
+    margin-left: 10px;
+}
+
 .kingdomImg {
     /* background-image: url("./images/Kingdom.png");
     background-repeat: no-repeat;
