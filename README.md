@@ -1,6 +1,6 @@
 How to play
 
-The goal of the game is to see how fast you can reach max-level castle. (Level 10 Castle)
+The goal of the game is to see how fast you can reach max-level catle. (Level 10 Castle)
 
 You start with some basic resources and 1 of each building. Cottages provide 4 villagers to your population. Since you start with 1 cottage, you start with 4 villagers in your population.
 
@@ -36,6 +36,7 @@ Stay tuned for future content updates including:
 * Bandit brawls!
 * Achievements!
 * Buffs and debuffs!
+* Interactive map!
 * And much much more!
 
 Just because this is a class project doesn’t mean it ends here. I’m already to invested and enjoying every minute of it!
