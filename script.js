@@ -35,7 +35,6 @@ function updateHtml() {
 
 //Event listeners
 lvlUp.addEventListener('click', () => {
-    console.log('Clicked!')
     checkCastleLvl()
 })
 addCottageBtn.addEventListener('click', () => {
